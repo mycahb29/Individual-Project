@@ -1,0 +1,48 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Prompt the user for input
+        Console.WriteLine("Enter the first number:");
+        string input1 = Console.ReadLine();
+        
+        Console.WriteLine("Enter the second number:");
+        string input2 = Console.ReadLine();
+
+        // Call the method to perform division
+        PerformDivision(input1, input2);
+    }
+
+    static void PerformDivision(string num1, string num2)
+    {
+        try
+        {
+            // Convert strings to integers
+            int number1 = Convert.ToInt32(num1);
+            int number2 = Convert.ToInt32(num2);
+
+            // Perform division
+            int result = number1 / number2;
+            
+            // If no exception, print the result
+            Console.WriteLine($"Result: {number1} / {number2} = {result}");
+        }
+        catch (FormatException)
+        {
+            // Handle case where input cannot be converted to an integer
+            Console.WriteLine("Error: One or both of the inputs are not valid numbers.");
+        }
+        catch (DivideByZeroException)
+        {
+            // Handle division by zero
+            Console.WriteLine("Error: Division by zero is not allowed.");
+        }
+        catch (Exception ex)
+        {
+            // General exception handler for any other unexpected errors
+            Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+        }
+    }
+}
